@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>st0rms3c.github.io</title>
+  <meta name="description" content="A minimalist cybersecurity blog">
+  <link rel="icon" href="data:image/png;base64,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">
+  <!-- og tags -->
+  <meta property="og:title" content="st0rms3c.github.io">
+  <meta property="og:description" content="A minimalist cybersecurity blog">
+  <!-- other -->
+  <meta name="twitter:card" content="summary">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  
+  
+  --text-color: #aaaaaa;
+  --text-color-light: #dddddd;
+  --text-color-pale: #444444;
+  --back-color: #111111;
+  --link-color: #33aaff; 
+  
+  .search-bar {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    font-size: 0.75em;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--text-color-light);
+    background: var(--back-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  }
+
+  .search-bar:focus {
+    border-color: var(--link-color); /* Highlight effect */
+  }
+
+  .search-bar::placeholder {
+    color: var(--text-color-light);
+    opacity: 0.6;
+  }
+
+    .hidden {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  * {
+    --text-color: #aaaaaa;
+    --text-color-light: #dddddd;
+    --text-color-pale: #444444;
+    --back-color: #111111;
+    --link-color: #33ff55; 
+  }
+}
+
+body {
+  font: 18.5px / 1.5 system-ui, "Segoe UI", sans-serif;
+  color: var(--text-color);
+  background: var(--back-color);
+  padding: 5vw 5vw;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body > * {
+  max-width: 34em; /* column width */
+  margin:0 auto;
+}
+
+/* Show & hide sections */
+
+section, section:target ~ section:last-of-type {
+  display: none;
+  padding: 0;
+}
+
+section:target, section:last-of-type {
+  display: block;
+  scroll-margin-top: 100vh;
+}
+
+/* tabindex="0" */
+
+section:focus {
+  outline: 0;
+}
+
+/* Vertical spacing */
+
+section * + * {
+  margin-top: .9em;
+}
+
+/* Main */
+
+main {
+  padding-top: 1.8em;
+  padding-bottom: 2.1em;
+}
+
+/* Footer */
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: var(--text-color-light);
+}
+
+
+/* Table of contents */
+
+ul.toc {
+  overflow: hidden;
+}
+
+ul.toc * + * {
+  margin: 0;
+}
+
+ul.toc li {
+  color: var(--text-color-light);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
+}
+
+ul.toc li + li {
+  margin: .25em 0 0 0;
+}
+
+ul.toc li a {
+  color: var(--link-color);
+  flex: 1;
+}
+
+ul.toc li a span {
+  background: var(--back-color);
+  padding-inline-end: .3em;
+}
+
+ul.toc li time {
+  order: 1;
+  white-space:nowrap;
+  z-index: 1;
+  padding-inline-start:.3em;
+  background: var(--back-color);
+}
+
+ul.toc li a:after {
+  color: var(--text-color);
+  width: 100%;
+  font-size: .55em;
+  position: absolute;
+  bottom: .4em;
+  white-space: nowrap;
+  content:
+  ' . . . . . . . . . . . . . . . . . . . . . .'
+  ' . . . . . . . . . . . . . . . . . . . . . .'
+  ' . . . . . . . . . . . . . . . . . . . . . .'
+  ' . . . . . . . . . . . . . . . . . . . . . .'
+  ' . . . . . . . . . . . . . . . . . . . . . .'
+  ' . . . . . . . . . . . . . . . . . . . . . .';
+}
+
+/* General */
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  text-underline-offset: 1px;
+  overflow-wrap: break-word;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+a[href*="//"]:after, a[href^="mailto:"]:after {
+  display: inline-block;
+  font-size: .8em;
+  content: "\2197"; /* top right arrow: ↗ */
+}
+
+/* Headings */
+
+header h1 a {
+  font-weight: normal;
+  display: block;
+}
+
+section h1 {
+  margin-bottom: 1em;
+}
+
+h1, h2, h3, h4, strong, b, dt {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+* + h2, * + h3, * + h4 {
+  margin-top: 1.4em;
+}
+
+h3 {
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: .9em;
+  font-weight: normal;
+}
+
+/* Lists */
+
+li, dd {
+  margin-inline-start: 1.25em;
+}
+
+li + li, li ol, li ul {
+  margin-top: .2em;
+}
+
+.footnotes li {
+  margin-top:.5em;
+  max-width:95%;
+}
+
+/* Images */
+
+img {
+  display: block;
+  max-width: 100%;
+  min-height:4em;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+  box-shadow: 0 .05em .4em var(--text-color-pale);
+  background: rgba(0,0,0,.025);
+}
+
+img:after { /* style offline images */
+  content: attr(alt);
+  display: grid;
+  align-content:center;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: .865em;
+  text-align: center;
+  border:1px dashed var(--text-color-light);
+  background-color: var(--back-color);
+}
+
+figure {
+  padding: 1.5em 1.2em;
+}
+
+figcaption {
+  color: var(--text-color-light);
+  text-align: center;
+}
+
+figcaption a {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+figcaption, small, .footnotes {
+  font-size: .865em;
+}
+
+/* Other elements */
+
+blockquote {
+  font-family: "Iowan Old Style", Constantia, Georgia, serif;
+  font-size: 1.025em;
+  font-variant-numeric: oldstyle-nums;
+  padding: .4em 1.2em;
+}
+
+abbr[title] {
+  text-decoration: none;
+  cursor: help;
+}
+
+a abbr[title] {
+  cursor: pointer;
+  color: inherit;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-bottom: 1px solid;
+  opacity: .1;
+  margin: 1.4em 0;
+}
+
+sup {
+  line-height: 1;
+  font-size: .75em;
+}
+
+code, kbd {
+  font-family: ui-monospace, SFMono-Regular, 'Cascadia Code', Menlo, monospace;
+  overflow-wrap: break-word;
+  font-size:.95em;
+  color: var(--text-color-light);
+}
+
+kbd {
+  box-shadow:0 .5px 1px;
+  border-radius:2px;
+  padding:.1em .325em .075em;
+  margin: 0 .1em;
+}
+
+pre {
+  overflow: auto;
+  padding: .5em .85em .6em;
+  background: rgba(0,0,0,0.25);  
+  border-radius: 4px;
+  margin: 1em 0;
+}
+
+pre code {
+  position: relative;
+  display:block;
+  overflow-wrap: normal;
+}
+
+pre code:after {
+  /*content: attr(class);*/
+  position: absolute;
+  right: -.6em;
+  top: -.3em;
+  text-transform: uppercase;
+  font-size: .7em;
+  color: var(--text-color-light);
+}
+
+/* Tables */
+
+table {
+  border-collapse: collapse;
+  font-size: .9em;
+  width: 100%;
+  margin: 1.5em 0;
+}
+
+thead th {
+  text-align: start;
+  border-bottom: 1px solid;
+}
+
+th, td {
+  padding: .4em .6em;
+  border: 1px dotted var(--text-color-pale);
+}
+
+/* Disable footnotes #links */
+
+sup a {
+  color: currentColor;
+  pointer-events: none;
+}
+
+a.footnote-backref {
+  display: none;
+}
+
+/* Smaller screens */
+
+@media only screen and (max-width: 500px) {
+  body {
+    font-size: 16px;
+  }
+  footer small {
+    font-size: 1em;
+  }
+  blockquote, figure {
+    padding:2vw 4vw;
+  }
+  ul.toc li + li {
+    margin-top:.4em;
+  }
+  footer small:first-of-type {
+    left: -1000vw;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+  }
+}
+
+/* Print */
+
+@media print {
+  * {
+    --back-color: #fff;
+  } 
+  section {    
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    display: block;
+    padding: 2em 0;
+  }
+  section * {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  footer {
+    display: none;
+  }
+}
+  </style>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const searchInput = document.getElementById("searchInput");
+      const posts = document.querySelectorAll(".toc li");
+
+      function filterPosts() {
+          const query = searchInput.value.toLowerCase();
+          posts.forEach(post => {
+              const text = post.querySelector("a span").textContent.toLowerCase();
+              post.style.display = text.includes(query) ? "" : "none";
+          });
+      }
+
+      function toggleSearchBar() {
+          const hash = window.location.hash;
+          if (hash === "" || hash === "#home") {
+              searchInput.style.display = "block";
+          } else {
+              searchInput.style.display = "none";
+              searchInput.value = "";
+              filterPosts();
+          }
+      }
+
+      // Initial check on page load
+      toggleSearchBar();
+
+      // Listen for URL hash changes (navigation)
+      window.addEventListener("hashchange", toggleSearchBar);
+
+      // Attach event listener for search functionality
+      searchInput.addEventListener("input", filterPosts);
+  });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>
+      <a href="#home" style="font-weight: bold">st0rms3c.github.io</a>
+    </h1>
+  </header>
+  <main>
+    <input type="text" class="search-bar" id="searchInput" placeholder="Search" oninput="filterPosts()" />
+    <section>
+      <nav>
+        <ul class="toc" id="postList">
+          <li><time datetime="2025-01-22">Jan 22 2025</time> <a href="#welcome-to-my-site-2025-01-22"><span>Welcome to My Site
+</span></a></li>        </ul>
+      </nav>
+    </section>
+    <section tabindex="0" role="document" aria-label="About" id="about"><h2>About Me</h2>
+<p>I'm a programmer and cybersecurity enthusiast with an affinity for reverse engineering, binary exploitation and malware development.</p>
+<p>I don't have any formal education. I'm completely self-taught since the age of approximately fourteen. Python and C are the primary languages I use on a day to day basis, with a healthy amount of x86 assembly sprinkled on top. I'm also not too shabby with bash, PowerShell, C#, PHP and JavaScript, and have also dabbled with probably a dozen other languages over the years.</p>
+<p>This blog was created with a lightly modified version of <a href="https://github.com/cadars/portable-php/tree/main">portable-php</a>; I want my tools to get out of my way and I value simplicity above all else.</p>
+<p>I don't possess any industry recognized certifications such as OSCP (I simply can't afford any of them), but am active on <a href="https://app.hackthebox.com/profile/2046956">HackTheBox</a> where I maintain a top 10 global ranking, Omniscient rank (100% of active content cleared) and have completed every one of their pro labs and mini pro labs (not listed).</p>
+<table>
+<thead>
+<tr>
+<th>HTB Pro Lab</th>
+<th>Completion Date</th>
+<th>Certificate ID<sup><a href="#" class="footnote-ref">1</a></sup></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="img/HackTheBox-ProLabs-Dante-11_10_2024.png">Dante</a></td>
+<td>Nov 10, 2024</td>
+<td>HTBCERT-8129E29B77</td>
+</tr>
+<tr>
+<td><a href="img/HackTheBox-ProLabs-Alchemy-11_15_2024.png">Alchemy</a></td>
+<td>Nov 15, 2024</td>
+<td>HTBCERT-1518EB2F3D</td>
+</tr>
+<tr>
+<td><a href="img/HackTheBox-ProLabs-Zephyr-11_20_2024.png">Zephyr</a></td>
+<td>Nov 20, 2024</td>
+<td>HTBCERT-9513D95A0F</td>
+</tr>
+<tr>
+<td><a href="img/HackTheBox-Prolabs-APTLabs-11_30_2024.png">APTLabs</a></td>
+<td>Nov 30, 2024</td>
+<td>HTBCERT-2E90E7EA75</td>
+</tr>
+<tr>
+<td><a href="img/HackTheBox-ProLabs-RastaLabs_12_03_2024.png">RastaLabs</a></td>
+<td>Dec 03, 2024</td>
+<td>HTBCERT-7CF5193E9A</td>
+</tr>
+<tr>
+<td><a href="img/HackTheBox-ProLabs-Offshore-12_15_2024.png">Offshore</a></td>
+<td>Dec 15, 2024</td>
+<td>HTBCERT-954889A56E</td>
+</tr>
+<tr>
+<td><a href="img/HackTheBox-Prolabs-Cybernetics-12_29_2024.png">Cybernetics</a></td>
+<td>Dec 29, 2024</td>
+<td>HTBCERT-C270BB0A75</td>
+</tr>
+</tbody>
+</table>
+<p>I'm currently looking for work, with the primary goal being to get my foot in the door; I'm not going to turn my nose up at low paying or entrylevel jobs, as finding work has proven to be very difficult due to my lack of certifications and relevant industry experience. I would be open to just about anything and would relish the opportunity to demonstrate my knowledge and aptitude.</p>
+<p>The most reliable way to contact me is via <a href="mailto:st0rms3c@protonmail.com">email</a> or <a href="https://www.linkedin.com/in/st0rms3c/">LinkedIn</a>. There's also <a href="https://discordapp.com/users/1273770970783420580">Discord</a>, but I'll need to approve your DM request. Finally, there's <a href="https://github.com/st0rms3c">github</a>.</p>
+<p>Thank you for visiting. I hope you found something of value.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li>
+<p><a href="https://www.hackthebox.com/certificates">HTB Certificate Validation</a>&#160;<a href="#" class="footnote-backref">&#8617;</a></p>
+</li>
+</ol>
+</div></section>    <section tabindex="0" role="document" aria-label="Projects" id="projects"><h2>Projects</h2>
+<p>Coming soon!</p></section>    <section tabindex="0" role="document" aria-label="Welcome to My Site
+" id="welcome-to-my-site-2025-01-22"><h2>Welcome to My Site</h2>
+<p>In the coming months I'll be using this space to document and write about various cybersecurity topics and projects of mine. In particular I'll be writing about <a href="https://app.hackthebox.com">HackTheBox</a> content as it retires and anything I found interesting in the process of completing it. I'll be participating on <a href="https://www.vulnlab.com/">Vulnlab</a> as well.</p>
+<p>I also have plans to start working on my own <a href="https://shogunlab.gitbook.io/building-c2-implants-in-cpp-a-primer">C2 framework</a> (I won't be following this guide, necessarily, but I found it well put together and thought others could benefit from it) so I will hopefully have quite a bit to write about regarding <a href="https://www.splunk.com/en_us/blog/learn/ttp-tactics-techniques-procedures.html">TTPs</a> and AV/EDR evasion. I already have my own private loader with an integrated AMSI bypass, but I'd like to beef it up, so to speak, and turn it into a full blown C2 with a scripting engine (most likely <a href="https://luajit.org/">LuaJIT</a>]).</p>
+<p>Aside from that, anything else related to programming or cybersecurity that piques my interest and I feel like writing about will appear here.</p>
+<p>I've long had the very bad habit of not publishing any of my research or findings, which has essentially led to me being a ghost; nobody knows who I am or what I've done and I have nothing to back up any claims I could make about what I know or am capable of. That's great for my privacy and has resulted in a (mostly) peaceful and drama free online existence, but it's also my single biggest regret as far as trying to find gainful employment goes.</p>
+<p>So here's to this blog... Portfolio... <em>Thing</em>... And here's to the future!</p>
+<p>Thanks for stopping by.</p></section>    <section id="home">
+      <nav>
+        <ul class="toc">
+          <li><time datetime="2025-01-22">Jan 22 2025</time> <a href="#welcome-to-my-site-2025-01-22"><span>Welcome to My Site
+</span></a></li>        </ul>
+      </nav>
+    </section>
+  </main>
+  <footer>
+    <small>Last updated on January 22, 2025</small> 
+    <small>[ <a href="#about">About</a> - <a href="#projects">Projects</a> ]</small> 
+  </footer>
+<!--  generated by portable-php
+      Wednesday 22nd of January 2025 09:19:30 PM      
+      execution time: 0.014386177062988 seconds -->
+      
+</body>
+</html>
