@@ -16,20 +16,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;  
-  
+
   --text-color: #aaaaaa;
   --text-color-light: #dddddd;
   --text-color-pale: #444444;
   --back-color: #111111;
   --link-color: #33aaff; 
-  
+
   .search-bar {
     margin-bottom: 1em;
     padding: 0.5em;
     font-size: 0.75em;
     width: 100%;
     box-sizing: border-box;
-    border: 1px solid var(--text-color-light);
+    border: 1px solid var(--text-color-pale);
     background: var(--back-color);
     color: var(--text-color);
     border-radius: 4px;
@@ -46,9 +46,8 @@
     opacity: 0.6;
   }
 
-    .hidden {
-      display: none;
-    }
+  .hidden {
+    display: none;
   }
 }
 
@@ -58,7 +57,7 @@
     --text-color-light: #dddddd;
     --text-color-pale: #444444;
     --back-color: #111111;
-    --link-color: #33ff55; 
+    --link-color: #33aaff; 
   }
 }
 
@@ -72,7 +71,7 @@ body {
 }
 
 body > * {
-  max-width: 34em; /* column width */
+  max-width: 68em; /* column width */
   margin:0 auto;
 }
 
@@ -165,6 +164,9 @@ ul.toc li a:after {
   bottom: .4em;
   white-space: nowrap;
   content:
+  ' . . . . . . . . . . . . . . . . . . . . . .'
+  ' . . . . . . . . . . . . . . . . . . . . . .'
+  ' . . . . . . . . . . . . . . . . . . . . . .'
   ' . . . . . . . . . . . . . . . . . . . . . .'
   ' . . . . . . . . . . . . . . . . . . . . . .'
   ' . . . . . . . . . . . . . . . . . . . . . .'
@@ -318,8 +320,9 @@ sup {
 code, kbd {
   font-family: ui-monospace, SFMono-Regular, 'Cascadia Code', Menlo, monospace;
   overflow-wrap: break-word;
-  font-size:.95em;
   color: var(--text-color-light);
+  font-size: 0.75em;
+  background: #0d0d0d;
 }
 
 kbd {
@@ -389,15 +392,19 @@ a.footnote-backref {
   body {
     font-size: 16px;
   }
+  
   footer small {
     font-size: 1em;
   }
+  
   blockquote, figure {
     padding:2vw 4vw;
   }
+  
   ul.toc li + li {
     margin-top:.4em;
   }
+  
   footer small:first-of-type {
     left: -1000vw;
     height: 0;
@@ -412,6 +419,7 @@ a.footnote-backref {
   * {
     --back-color: #fff;
   } 
+  
   section {    
     page-break-after: always;
     page-break-inside: avoid;
@@ -419,49 +427,18 @@ a.footnote-backref {
     display: block;
     padding: 2em 0;
   }
+  
   section * {
     page-break-inside: avoid;
     break-inside: avoid;
   }
+  
   footer {
     display: none;
   }
 }
   </style>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-      const searchInput = document.getElementById("searchInput");
-      const posts = document.querySelectorAll(".toc li");
-
-      function filterPosts() {
-          const query = searchInput.value.toLowerCase();
-          posts.forEach(post => {
-              const text = post.querySelector("a span").textContent.toLowerCase();
-              post.style.display = text.includes(query) ? "" : "none";
-          });
-      }
-
-      function toggleSearchBar() {
-          const hash = window.location.hash;
-          if (hash === "" || hash === "#home") {
-              searchInput.style.display = "block";
-          } else {
-              searchInput.style.display = "none";
-              searchInput.value = "";
-              filterPosts();
-          }
-      }
-
-      // Initial check on page load
-      toggleSearchBar();
-
-      // Listen for URL hash changes (navigation)
-      window.addEventListener("hashchange", toggleSearchBar);
-
-      // Attach event listener for search functionality
-      searchInput.addEventListener("input", filterPosts);
-  });
-  </script>
+  <link href="prism.css" rel="stylesheet" />
 </head>
 <body>
   <header>
@@ -471,59 +448,59 @@ a.footnote-backref {
   </header>
   <main>
     <input type="text" class="search-bar" id="searchInput" placeholder="Search" oninput="filterPosts()" />
-    <section>
+    <section id="home">
       <nav>
         <ul class="toc" id="postList">
-          <li><time datetime="2025-01-22">Jan 22 2025</time> <a href="#welcome-to-my-site-2025-01-22"><span>Welcome to My Site
+          <li><time datetime="2025-01-29">Jan 29 2025</time> <a href="#silent-ntdll-enumeration-2025-01-29"><span>Silent NTDLL Enumeration
+</span></a></li><li><time datetime="2025-01-22">Jan 22 2025</time> <a href="#welcome-to-my-site-2025-01-22"><span>Welcome to My Site
 </span></a></li>        </ul>
       </nav>
     </section>
     <section tabindex="0" role="document" aria-label="About" id="about"><h2>About Me</h2>
 <p>I'm a programmer and cybersecurity enthusiast with an affinity for reverse engineering, binary exploitation and malware development.</p>
-<p>I don't have any formal education. I'm completely self-taught since the age of approximately fourteen. Python and C are the primary languages I use on a day to day basis, with a healthy amount of x86 assembly sprinkled on top. I'm also not too shabby with bash, PowerShell, C#, PHP and JavaScript, and have also dabbled with probably a dozen other languages over the years.</p>
-<p>This site was created with a lightly modified version of <a href="https://github.com/cadars/portable-php/tree/main">portable-php</a>; I want my tools to get out of my way and I value simplicity above all else.</p>
-<p>I don't possess any industry recognized certifications such as OSCP (I simply can't afford any of them), but am active on <a href="https://app.hackthebox.com/profile/2046956">HackTheBox</a> where I maintain a top 10 global ranking, Omniscient rank (100% of active content cleared) and have completed every one of their pro labs and mini pro labs (not listed).</p>
+<p>I have no formal education, being completely self-taught since the age of around fourteen. Python and C are the primary languages I use on a day-to-day basis, with a healthy amount of x86 assembly sprinkled on top for good measure. I also have a decent amount of experience with PHP, Perl, JavaScript, Bash, PowerShell and C#, and have also dabbled with probably another dozen other languages over the years. This site was created with lightly modified versions of <a href="https://github.com/cadars/portable-php/tree/main">portable-php</a> and <a href="https://prismjs.com/">prism.js</a>. I want my tools to <em>just work</em> and to get out of my way, valuing minimalism and simplicity above all else.</p>
+<p>I don't possess any industry recognized certifications such as OSCP (I simply can't afford any of them), but am active on <a href="https://app.hackthebox.com/profile/2046956">HackTheBox</a> where I maintain a top 10 global standing, Omniscient rank (all active content cleared) and have completed every one of their pro labs (outdated "mini" pro labs not listed).</p>
 <table>
 <thead>
 <tr>
-<th>HTB Pro Lab</th>
-<th>Completion Date</th>
-<th>Certificate ID<sup><a href="#" class="footnote-ref">1</a></sup></th>
+<th><strong>HTB Pro Lab</strong></th>
+<th><strong>Completion Date</strong></th>
+<th><strong>Certificate ID<sup><a href="#" class="footnote-ref">1</a></sup></strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="img/HackTheBox-ProLabs-Dante-11_10_2024.png">Dante</a></td>
+<td><a href="img/about/HackTheBox-ProLabs-Dante-11_10_2024.png">Dante</a></td>
 <td>Nov 10, 2024</td>
 <td>HTBCERT-8129E29B77</td>
 </tr>
 <tr>
-<td><a href="img/HackTheBox-ProLabs-Alchemy-11_15_2024.png">Alchemy</a></td>
+<td><a href="img/about/HackTheBox-ProLabs-Alchemy-11_15_2024.png">Alchemy</a></td>
 <td>Nov 15, 2024</td>
 <td>HTBCERT-1518EB2F3D</td>
 </tr>
 <tr>
-<td><a href="img/HackTheBox-ProLabs-Zephyr-11_20_2024.png">Zephyr</a></td>
+<td><a href="img/about/HackTheBox-ProLabs-Zephyr-11_20_2024.png">Zephyr</a></td>
 <td>Nov 20, 2024</td>
 <td>HTBCERT-9513D95A0F</td>
 </tr>
 <tr>
-<td><a href="img/HackTheBox-Prolabs-APTLabs-11_30_2024.png">APTLabs</a></td>
+<td><a href="img/about/HackTheBox-Prolabs-APTLabs-11_30_2024.png">APTLabs</a></td>
 <td>Nov 30, 2024</td>
 <td>HTBCERT-2E90E7EA75</td>
 </tr>
 <tr>
-<td><a href="img/HackTheBox-ProLabs-RastaLabs_12_03_2024.png">RastaLabs</a></td>
+<td><a href="img/about/HackTheBox-ProLabs-RastaLabs_12_03_2024.png">RastaLabs</a></td>
 <td>Dec 03, 2024</td>
 <td>HTBCERT-7CF5193E9A</td>
 </tr>
 <tr>
-<td><a href="img/HackTheBox-ProLabs-Offshore-12_15_2024.png">Offshore</a></td>
+<td><a href="img/about/HackTheBox-ProLabs-Offshore-12_15_2024.png">Offshore</a></td>
 <td>Dec 15, 2024</td>
 <td>HTBCERT-954889A56E</td>
 </tr>
 <tr>
-<td><a href="img/HackTheBox-Prolabs-Cybernetics-12_29_2024.png">Cybernetics</a></td>
+<td><a href="img/about/HackTheBox-Prolabs-Cybernetics-12_29_2024.png">Cybernetics</a></td>
 <td>Dec 29, 2024</td>
 <td>HTBCERT-C270BB0A75</td>
 </tr>
@@ -540,28 +517,323 @@ a.footnote-backref {
 </li>
 </ol>
 </div></section>    <section tabindex="0" role="document" aria-label="Projects" id="projects"><h2>Projects</h2>
-<p>Coming soon!</p></section>    <section tabindex="0" role="document" aria-label="Welcome to My Site
+<ul>
+<li>Silent NTDLL Enumeration: <a href="index.html#silent-ntdll-enumeration-2025-01-29">Blog</a>, <a href="https://github.com/st0rms3c/silent_ntdll">Code</a></li>
+</ul></section>    <section tabindex="0" role="document" aria-label="Silent NTDLL Enumeration
+" id="silent-ntdll-enumeration-2025-01-29"><h2>Silent NTDLL Enumeration</h2>
+<p>A popular technique for AV/EDR evasion is manually performing <a href="https://redops.at/en/blog/direct-syscalls-vs-indirect-syscalls">syscalls</a>. There are multiple projects that have been developed to that end, but most of them suffer from one downside or another; having to manually generate SSNs (System Service Numbers) for the target environment prior to deployment, setting breakpoints, (ab)using <a href="https://learn.microsoft.com/en-us/windows/win32/debug/vectored-exception-handling">Vectored Exception Handling</a>, reading NTDLL from disk, calling functions that have already be hooked, etc. Relying on code written by others is a personal pet peeve of mine, so I decided to come up with my own solution and eliminate all of the aforementioned issues.</p>
+<p>The very first thing I realized was that if I wanted to avoid as much scrutiny as possible, I'd need to locate NTDLL without calling anything suspicious from the Windows <a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/c-run-time-library-reference?view=msvc-170">CRT</a> or <a href="https://learn.microsoft.com/en-us/windows/win32/apiindex/windows-api-list">API</a>. My thought process was that by the time my code got executed, AV/EDR would have long since hooked everything and any external function I called could potentially be monitored; something I wanted to avoid entirely. As an example of that, calling the CRT function <a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/fopen-wfopen?view=msvc-170">fopen</a> on "ntdll.dll" will ultimately result in a call to <a href="https://learn.microsoft.com/en-us/windows/win32/api/winternl/nf-winternl-ntcreatefile">NtCreateFile</a> and, presumably, a detection. Many CRT functions <em>don't</em> have this issue, but I'm paranoid.</p>
+<p>That left me with almost nothing. I could call my own functions and dereference memory. That was it. I knew that NTDLL was somewhere in memory, but how was I supposed to find it without calling any functions? Enter the <a href="https://devblogs.microsoft.com/oldnewthing/20041025-00/?p=37483">__ImageBase</a> pseudovariable generated by the <a href="https://visualstudio.microsoft.com/">MSVC</a> linker. This pseudovariable will always point to the current module's <a href="https://learn.microsoft.com/en-us/archive/msdn-magazine/2002/february/inside-windows-win32-portable-executable-file-format-in-detail">IMAGE_DOS_HEADER</a> structure, which is also equivalent to the current process' base address.</p>
+<p>Note: All code presented herein will be using <code>printf</code> statements and calls to <a href="https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandlea">GetModuelHandleA</a> for debugging/demonstration purposes. These would not be present in a live payload. Additionally, I've implemented some <em>very</em> basic XOR masking, but absolutely nothing else in the way of obfuscation.</p>
+<pre><code class="language-C">BYTE* image = (BYTE*)(&amp; __ImageBase);
+IMAGE_DOS_HEADER* dos_header = (IMAGE_DOS_HEADER*)(image);
+
+printf("Magic value is: %04X\n", dos_header-&gt;e_magic);
+printf("Base address is: %016llX\n", (UINT64)image);
+printf("Base address is: %016llX\n", (UINT64)GetModuleHandleA(NULL));</code></pre>
+<p>The above code will output the following:</p>
+<pre><code>Magic value is: 5A4D
+Base address is: 00007FF74D360000
+Base address is: 00007FF74D360000</code></pre>
+<p>Now that I had a pointer to the DOS header, I could start searching for NTDLL. Normally an executable won't directly import anything from NTDLL, however, but from KERNEL32 which then itself imports from NTDLL. So to find NTDLL I first had to find KERNEL32. Before jumping into that, I needed a way of doing string comparisons without calling something like <a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/stricmp-wcsicmp-mbsicmp-stricmp-l-wcsicmp-l-mbsicmp-l?view=msvc-170">_stricmp</a>. I wasn't worried about it being hooked, but using it would produce very obvious plaintext strings in the resulting binary and, again, the whole point here was to try to be stealthy. Enter <a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check">CRCs</a> (cyclic redundancy checks):</p>
+<pre><code class="language-C">DWORD crc32(BYTE* input, size_t bytes)
+{
+    DWORD crc32 = 0xFFFFFFFF;
+
+    for (size_t i = 0; i &lt; bytes; i++)
+    {
+        // Convert each character to lowercase prior to XORing.
+        crc32 ^= (input[i] &gt;= 0x41 &amp;&amp; input[i] &lt;= 0x5A) ? input[i] + 32 : input[i];
+
+        for (size_t j = 0; j &lt; 8; j++)
+            crc32 = (crc32 &gt;&gt; 1) ^ ((crc32 &amp; 1) ? 0xEDB88320 : 0);
+    }
+
+    return(crc32 ^ 0xFFFFFFFF);
+}</code></pre>
+<p>Using that, I was able to precompute the checksums for "kernel32.dll" and "ntdll.dll"; <code>6AE69F02</code> and <code>84C05E40</code>, respectively. It was time to start hunting.</p>
+<pre><code class="language-C">IMAGE_NT_HEADERS* nt_headers = (IMAGE_NT_HEADERS*)(image + dos_header-&gt;e_lfanew);
+UINT64 address = nt_headers-&gt;OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress;
+IMAGE_IMPORT_DESCRIPTOR* imports = (IMAGE_IMPORT_DESCRIPTOR*)(image + address);
+
+for (; imports-&gt;Characteristics != 0; imports++)
+{
+    BYTE* name = image + imports-&gt;Name;
+    size_t len = 0;
+
+    // No calling strlen()!
+    for (;; len++)
+    {
+        if (name[len] == 0)
+            break;
+    }
+
+    // Find "kernel32.dll".
+    if (crc32(name, len) == 0x6AE69F02)
+        break;
+}
+
+IMAGE_THUNK_DATA* import_names = (IMAGE_THUNK_DATA*)(image + imports-&gt;OriginalFirstThunk);
+IMAGE_THUNK_DATA* import_addrs = (IMAGE_THUNK_DATA*)(image + imports-&gt;FirstThunk);
+
+// The first two bytes of an import name are its ordinal value.
+printf("KERNEL32 first import name: %s\n", image + import_names-&gt;u1.AddressOfData + 2);
+printf("KERNEL32 first import addr: %016llX\n", import_addrs-&gt;u1.AddressOfData);</code></pre>
+<p>The above code will output the following:</p>
+<pre><code>KERNEL32 first import name: GetCurrentThreadId
+KERNEL32 first import addr: 00007FFE395A5890</code></pre>
+<p>Now I had another problem: How could I take the address of an import and find the base address of the image in which it resides without calling any functions? If you've spent any amount of time debugging on 64-bit Windows, you'll no doubt have noticed that modules are usually loaded at addresses ending in <code>0000</code>, while their exports <em>mostly</em> reside within that four byte range (or very closely adjacent to it). This is the key. The lower four bytes of an imported function's address can be nulled out. Starting there, it's then possible to step backwards in memory searching for the module's headers.</p>
+<p>Building off of the previous code, I now had this:</p>
+<pre><code class="language-C">image = (BYTE*)(import_addrs-&gt;u1.AddressOfData &amp; ~0xFFFF);
+
+do {
+    dos_header = (IMAGE_DOS_HEADER*)image;
+
+    // Check for XOR-masked IMAGE_DOS_SIGNATURE.
+    if ((dos_header-&gt;e_magic ^ 0xFFFF) == 0xA5B2)
+    {
+        nt_headers = (IMAGE_NT_HEADERS*)(image + dos_header-&gt;e_lfanew);
+
+        // Check for XOR-masked IMAGE_NT_SIGNATURE.
+        if ((nt_headers-&gt;Signature ^ 0xFFFF) == 0xBAAF)
+            break;
+    }
+
+    image -= 0x10000;
+
+} while (image &gt; 0);
+
+printf("KERNEL32 base address: %016llX\n", (UINT64)image);
+printf("KERNEL32 base address: %016llX\n", (UINT64)GetModuleHandleA("kernel32.dll"));</code></pre>
+<p>The above code will output the following:</p>
+<pre><code>KERNEL32 base address: 00007FFE39590000
+KERNEL32 base address: 00007FFE39590000</code></pre>
+<p>The addresses were identical. My technique worked. Now I simply had to repeat the process by walking KERNEL32's import directory, this time looking for NTDLL and then once again stepping backwards through memory from its first import to its base address.</p>
+<pre><code class="language-C">address = nt_headers-&gt;OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress;
+imports = (IMAGE_IMPORT_DESCRIPTOR*)(image + address);
+
+for (; imports-&gt;Characteristics != 0; imports++)
+{
+    BYTE* name = image + imports-&gt;Name;
+    size_t len = 0;
+
+    // No calling strlen()!
+    for (;; len++)
+    {
+        if (name[len] == 0)
+            break;
+    }
+
+    // Find "ntdll.dll".
+    if (crc32(name, len) == 0x84C05E40)
+        break;
+}
+
+import_names = (IMAGE_THUNK_DATA*)(image + imports-&gt;OriginalFirstThunk);
+import_addrs = (IMAGE_THUNK_DATA*)(image + imports-&gt;FirstThunk);
+
+// The first two bytes of an import name are its ordinal value.
+printf("NTDLL first import name: %s\n", image + import_names-&gt;u1.AddressOfData + 2);
+printf("NTDLL first import addr: %016llX\n", import_addrs-&gt;u1.AddressOfData);
+
+image = (BYTE*)(import_addrs-&gt;u1.AddressOfData &amp; ~0xFFFF);
+
+do {
+    dos_header = (IMAGE_DOS_HEADER*)image;
+
+    // Check for XOR-masked IMAGE_DOS_SIGNATURE.
+    if ((dos_header-&gt;e_magic ^ 0xFFFF) == 0xA5B2)
+    {
+        nt_headers = (IMAGE_NT_HEADERS*)(image + dos_header-&gt;e_lfanew);
+
+        // Check for XOR-masked IMAGE_NT_SIGNATURE.
+        if ((nt_headers-&gt;Signature ^ 0xFFFF) == 0xBAAF)
+            break;
+    }
+
+    image -= 0x10000;
+
+} while (image &gt; 0);
+
+printf("NTDLL base address: %016llX\n", (UINT64)image);
+printf("NTDLL base address: %016llX\n", (UINT64)GetModuleHandleA("ntdll.dll"));</code></pre>
+<p>The above code will output the following:</p>
+<pre><code>NTDLL first import name: _wcslwr
+NTDLL first import addr: 00007FFE39B7E3A0
+NTDLL base address: 00007FFE39AF0000
+NTDLL base address: 00007FFE39AF0000</code></pre>
+<p>Success. I had recovered NTDLL's base address. I could now set about enumerating NTDLL to calculate syscall SSNs and search for various gadgets that would allow me to invoke the <code>syscall</code> instruction, enumerate the <a href="https://en.wikipedia.org/wiki/Process_Environment_Block">PEB</a> (Process Environment Block), etc. All without calling any external functions.</p>
+<p>My preferred method for enumerating syscall SSNs is to simply sort all NTDLL <code>Zw*</code> function exports by their address in memory. That's it. It's dead simple and can be done at runtime on any version of Windows. It doesn't matter if there's AV/EDR. It doesn't matter if the syscall wrappers are hooked. It doesn't even matter if the entire wrapper has somehow been clobbered and the hardcoded SSN can't be extracted anymore (ala <a href="https://github.com/am0nsec/HellsGate/blob/master/hells-gate.pdf">HellsGate</a>). It just works.</p>
+<p>First, enumerating all of the NTDLL <code>Zw*</code> exports and recording their addresses, names and checksums.</p>
+<p>At the top of the file:</p>
+<pre><code class="language-C">struct syscall {
+    BYTE* addr;
+    BYTE name[MAX_PATH];
+    DWORD crc32;
+    DWORD ssn;
+    BOOL sorted;
+};
+
+static struct syscall syscalls[512] = { 0 };</code></pre>
+<p>And the accompanying code:</p>
+<pre><code class="language-C">DWORD index = 0;
+
+address = nt_headers-&gt;OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress;
+IMAGE_EXPORT_DIRECTORY* exports = (IMAGE_EXPORT_DIRECTORY*)(image + address);
+
+UINT32* export_funcs = (UINT32*)(image + exports-&gt;AddressOfFunctions);
+UINT32* export_names = (UINT32*)(image + exports-&gt;AddressOfNames);
+UINT16* export_nords = (UINT16*)(image + exports-&gt;AddressOfNameOrdinals);
+
+for (DWORD i = 0; i &lt; exports-&gt;NumberOfNames; i++)
+{
+    BYTE* func_name = (BYTE*)(image + export_names[i]);
+    BYTE* func_addr = (BYTE*)(image + export_funcs[export_nords[i]]);
+
+    // Look for exports starting with "Zw" (XOR-masked).
+    if ((*((UINT16*)func_name) ^ 0xFFFF) != 0x88A5)
+        continue;
+
+    size_t len = 0;
+
+    // No calling strlen() or memcpy()!
+    for (;; len++)
+    {
+        if (func_name[len] == 0)
+            break;
+
+        syscalls[index].name[len] = func_name[len];
+    }
+
+    // Convert "Zw" to "Nt" for checksum/lookup purposes.
+    syscalls[index].name[0] ^= 0x14;
+    syscalls[index].name[1] ^= 0x03;
+
+    syscalls[index].addr = func_addr;
+    syscalls[index].crc32 = crc32(syscalls[index].name, len);
+
+    index++;
+}</code></pre>
+<p>Finally, my (probably horribly inefficient) "sorting" algorithm. It doesn't actually <em>sort</em> the array, just assigns SSNs based on memory addresses.</p>
+<pre><code class="language-C">DWORD ssn = 0;
+
+for (;;)
+{
+    BOOL found = FALSE;
+    BYTE* lowest_addr = NULL;
+    DWORD lowest_index = 0;
+
+    for (DWORD i = 0; i &lt; index; i++)
+    {
+        if (syscalls[i].sorted == TRUE)
+            continue;
+
+        // Find the "unsorted" entry with the lowest address.
+        if (lowest_addr == NULL || syscalls[i].addr &lt; lowest_addr)
+        {
+            found = TRUE;
+            lowest_addr = syscalls[i].addr;
+            lowest_index = i;
+        }
+    }
+
+    // No more entries.
+    if (found == FALSE)
+        break;
+
+    syscalls[lowest_index].ssn = ssn++;
+    syscalls[lowest_index].sorted = TRUE;
+
+    printf("SYSCALL %s SSN: %04X\n", syscalls[lowest_index].name, syscalls[lowest_index].ssn);
+}</code></pre>
+<p>The above code will output the following (truncated for obvious reasons):</p>
+<pre><code>SYSCALL NtAccessCheck SSN: 0000
+SYSCALL NtWorkerFactoryWorkerReady SSN: 0001
+SYSCALL NtAcceptConnectPort SSN: 0002
+SYSCALL NtMapUserPhysicalPagesScatter SSN: 0003
+SYSCALL NtWaitForSingleObject SSN: 0004
+SYSCALL NtCallbackReturn SSN: 0005
+...</code></pre>
+<p>Load up your local copy of NTDLL in IDA and inspect one of the syscall wrappers. You'll see <code>EAX</code> being set to the value from the output above just before the <code>syscall</code> instruction. We've achieved a perfect 1:1 mapping of SSNs without calling any external functions or reading NTDLL off disk. Beautiful.</p>
+<pre><code class="language-nasm">.text:000000018009D580 ; =============== S U B R O U T I N E =======================================
+.text:000000018009D580
+.text:000000018009D580
+.text:000000018009D580                 public ZwCallbackReturn
+.text:000000018009D580 ZwCallbackReturn proc near              ; CODE XREF: KiUserCallbackDispatcherHandler+77↓p
+.text:000000018009D580                                         ; KiUserCallbackDispatcher+2B↓p
+.text:000000018009D580                                         ; DATA XREF: ...
+.text:000000018009D580                 mov     r10, rcx        ; NtCallbackReturn
+.text:000000018009D583                 mov     eax, 5
+.text:000000018009D588                 test    byte ptr ds:7FFE0308h, 1
+.text:000000018009D590                 jnz     short loc_18009D595
+.text:000000018009D592                 syscall                 ; Low latency system call
+.text:000000018009D594                 retn
+.text:000000018009D595 ; ---------------------------------------------------------------------------
+.text:000000018009D595
+.text:000000018009D595 loc_18009D595:                          ; CODE XREF: ZwCallbackReturn+10↑j
+.text:000000018009D595                 int     2Eh             ; DOS 2+ internal - EXECUTE COMMAND
+.text:000000018009D595                                         ; DS:SI -&gt; counted CR-terminated command string
+.text:000000018009D597                 retn
+.text:000000018009D597 ZwCallbackReturn endp</code></pre>
+<p>And just for good measure, <a href="https://www.virustotal.com/gui/file/78a159cef194c71ecc53fd6712cac449424cb4831d15b741d8ad2bb05f335522">VirusTotal</a> results:</p>
+<figure><img src="img/2025-01-28/virustotal.png" alt="VirusTotal" loading="lazy" /></figure>
+<p>Anyway, that's all for now. Thanks for reading. All of the code presented here is available on my <a href="https://github.com/st0rms3c/silent_ntdll">Github</a>.</p></section><section tabindex="0" role="document" aria-label="Welcome to My Site
 " id="welcome-to-my-site-2025-01-22"><h2>Welcome to My Site</h2>
-<p>In the coming months I'll be using this space to document and write about various cybersecurity topics and projects of mine. In particular I'll be writing about <a href="https://app.hackthebox.com">HackTheBox</a> content as it retires and anything I found interesting in the process of completing it. I'll be participating on <a href="https://www.vulnlab.com/">Vulnlab</a> as well.</p>
-<p>I also have plans to start working on my own <a href="https://shogunlab.gitbook.io/building-c2-implants-in-cpp-a-primer">C2 framework</a> (I won't be following this guide, necessarily, but I found it well put together and thought others could benefit from it) so I will hopefully have quite a bit to write about regarding <a href="https://www.splunk.com/en_us/blog/learn/ttp-tactics-techniques-procedures.html">TTPs</a> and AV/EDR evasion. I already have my own private loader with an integrated AMSI bypass, but I'd like to beef it up, so to speak, and turn it into a full blown C2 with a scripting engine (most likely <a href="https://luajit.org/">LuaJIT</a>]).</p>
+<p>In the coming months I'll be using this space to document and write about various cybersecurity topics and projects of mine. In particular I'll be writing about <a href="https://app.hackthebox.com/">HackTheBox</a> content as it retires and anything I found interesting in the process of completing it. I'll be participating on <a href="https://www.vulnlab.com/">Vulnlab</a> as well.</p>
+<p>I also have plans to start working on my own <a href="https://shogunlab.gitbook.io/building-c2-implants-in-cpp-a-primer">C2 framework</a> (I won't be following this guide, necessarily, but I found it well put together and thought others could benefit from it) so I will hopefully have quite a bit to write about regarding <a href="https://www.splunk.com/en_us/blog/learn/ttp-tactics-techniques-procedures.html">TTPs</a> and AV/EDR evasion. I already have my own private loader with an integrated AMSI bypass, but I'd like to beef it up, so to speak, and turn it into a full blown C2 with a scripting engine (most likely <a href="https://luajit.org/">LuaJIT</a>).</p>
 <p>Aside from that, anything else related to programming or cybersecurity that piques my interest and I feel like writing about will appear here.</p>
 <p>I've long had the very bad habit of not publishing any of my research or findings, which has essentially led to me being a ghost; nobody knows who I am or what I've done and I have nothing to back up any claims I could make about what I know or am capable of. That's great for my privacy and has resulted in a (mostly) peaceful and drama free online existence, but it's also my single biggest regret as far as trying to find gainful employment goes.</p>
 <p>So here's to this blog... Portfolio... <em>Thing</em>... And here's to the future!</p>
 <p>Thanks for stopping by.</p></section>    <section id="home">
       <nav>
         <ul class="toc">
-          <li><time datetime="2025-01-22">Jan 22 2025</time> <a href="#welcome-to-my-site-2025-01-22"><span>Welcome to My Site
+          <li><time datetime="2025-01-29">Jan 29 2025</time> <a href="#silent-ntdll-enumeration-2025-01-29"><span>Silent NTDLL Enumeration
+</span></a></li><li><time datetime="2025-01-22">Jan 22 2025</time> <a href="#welcome-to-my-site-2025-01-22"><span>Welcome to My Site
 </span></a></li>        </ul>
       </nav>
     </section>
   </main>
   <footer>
-    <small>Last updated on January 22, 2025</small> 
+    <small>Last updated on January 29, 2025</small> 
     <small>[ <a href="#about">About</a> - <a href="#projects">Projects</a> ]</small> 
   </footer>
 <!--  generated by portable-php
-      Wednesday 22nd of January 2025 10:56:52 PM      
-      execution time: 0.015064001083374 seconds -->
-      
+      Wednesday 29th of January 2025 08:42:06 PM      
+      execution time: 0.13148498535156 seconds -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("searchInput");
+        const posts = document.querySelectorAll(".toc li");
+
+        function filterPosts() {
+            const query = searchInput.value.toLowerCase();
+            posts.forEach(post => {
+                const text = post.querySelector("a span").textContent.toLowerCase();
+                post.style.display = text.includes(query) ? "" : "none";
+            });
+        }
+
+        function toggleSearchBar() {
+            const hash = window.location.hash;
+            if (hash === "" || hash === "#home") {
+                searchInput.style.display = "block";
+            } else {
+                searchInput.style.display = "none";
+                searchInput.value = "";
+                filterPosts();
+            }
+        }
+
+        // Initial check on page load
+        toggleSearchBar();
+    
+        // Listen for URL hash changes (navigation)
+        window.addEventListener("hashchange", toggleSearchBar);
+
+        // Attach event listener for search functionality
+        searchInput.addEventListener("input", filterPosts);
+    });
+  </script>
+  <script src="prism.js"></script>
 </body>
 </html>
